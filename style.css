@@ -1,0 +1,94 @@
+body {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat';
+}
+
+.button {
+    position: relative;
+    width: 180px;
+    height: 80px;
+    background: #f1f9f9;
+    border-radius: 3px;
+}
+
+.button .checkbox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.button .knobs {
+    z-index: 2;
+    perspective: 150px;
+}
+
+.button .knobs::before {
+    content: "ON";
+    left: 28px;
+}
+
+.button .knobs::after {
+    content: "OFF";
+    right: 48px;
+}
+
+.button .knobs::before,
+.button .knobs::after {
+    width: 20px;
+    color: #4e4e4e;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    padding: 20px 0;
+}
+
+.button .knobs::before,
+.button .knobs::after,
+.button .knobs span {
+    position: absolute;
+    top: 10px;
+}
+
+.button .knobs span {
+    right: 10px;
+    width: 80px;
+    height: 60px;
+    background: #0fb100;
+    transform: rotateY(0);
+    transform-origin: 0;
+    transition: .6s ease all;
+    z-index: 1;
+    border-radius: 2px;
+}
+
+.button .knobs,
+.button .layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.button .checkbox:checked + .knobs span {
+    transform: rotateY(-180deg);
+    background: #f44336;
+}
+
+.button .layer {
+    background: #ecfceb;
+    transition: .6s ease all;
+}
+
+.button .checkbox:checked ~ .layer {
+    background: #fcebeb;
+}
